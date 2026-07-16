@@ -17,6 +17,7 @@
     <AppDomain>https://longbo-tan.github.io/excel-agent</AppDomain>
     <AppDomain>https://api.deepseek.com</AppDomain>
     <AppDomain>https://open.bigmodel.cn</AppDomain>
+    <AppDomain>https://token-plan-cn.xiaomimimo.com</AppDomain>
   </AppDomains>
   <Hosts>
     <Host Name="Workbook"/>
