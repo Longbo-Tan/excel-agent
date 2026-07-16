@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Excel Agent</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <script type="module" crossorigin src="/excel-agent/assets/taskpane-CCXh42JP.js"></script>
+  <link rel="stylesheet" crossorigin href="/excel-agent/assets/taskpane-DN5s57Tq.css">
+</head>
+<body>
+  <div id="app">
+    <div id="main-area">
+      <div id="chat-header">
+        <span id="chat-title">Excel Agent</span>
+        <div class="header-actions">
+          <button id="new-chat-btn" title="新建对话">+</button>
+          <button id="settings-btn" title="设置">⚙</button>
+        </div>
+      </div>
+
+      <div id="chat-messages">
+        <div class="welcome-msg">
+          <p>告诉我你想怎么处理这份表格</p>
+          <p class="hint">例如：把A列大于100的标红、生成销售报表、创建图表...</p>
+        </div>
+      </div>
+
+      <div id="chat-input-area">
+        <textarea id="chat-input" placeholder="输入消息..." rows="1"></textarea>
+        <button id="send-btn">发送</button>
+      </div>
+
+      <div id="footer">
+        <button id="mode-toggle" class="footer-btn">手动</button>
+        <span id="footer-model">deepseek-chat</span>
+        <span id="footer-context">--</span>
+        <span id="footer-tokens">↑0 ↓0</span>
+      </div>
+    </div>
+
+    <div id="settings-overlay" class="hidden"></div>
+    <div id="settings-panel" class="hidden">
+      <div class="panel-header">
+        <h2>设置</h2>
+        <button id="settings-close">✕</button>
+      </div>
+      <div class="panel-body">
+        <section>
+          <h3>API 配置</h3>
+          <label>API Key</label>
+          <input type="password" id="s-api-key" placeholder="sk-..." />
+          <label>Base URL</label>
+          <input type="text" id="s-base-url" placeholder="https://api.deepseek.com" />
+          <label>Model</label>
+          <input type="text" id="s-model" placeholder="deepseek-chat" />
+          <label>思考强度</label>
+          <select id="s-thinking">
+            <option value="off">关闭</option>
+            <option value="low">低</option>
+            <option value="medium" selected>中</option>
+            <option value="high">高</option>
+          </select>
+          <button id="s-test-btn">测试连接</button>
+        </section>
+        <section>
+          <h3>自定义规则</h3>
+          <textarea id="s-custom-rules" rows="3" placeholder="所有表头加粗居中，数字用千分位逗号..."></textarea>
+          <label class="checkbox-label">
+            <input type="checkbox" id="s-rules-enabled" checked /> 启用
+          </label>
+        </section>
+        <section>
+          <h3>Skills</h3>
+          <div id="s-skills-list"></div>
+          <button id="s-new-skill-btn">新建 Skill</button>
+          <div id="s-skill-editor" class="hidden">
+            <input type="text" id="s-skill-name" placeholder="Skill 名称" />
+            <input type="text" id="s-skill-trigger" placeholder="触发条件" />
+            <textarea id="s-skill-content" rows="6" placeholder="工作流程（Markdown）..."></textarea>
+            <div class="skill-editor-btns">
+              <button id="s-save-skill-btn">保存</button>
+              <button id="s-cancel-skill-btn">取消</button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
